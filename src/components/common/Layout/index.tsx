@@ -10,7 +10,7 @@ export const LayoutComponent: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="bg-blue-200 w-full absolute top-0 bottom-0">
       <HeaderSection />
-      <div className="pt-16 pb-16 h-full">{children}</div>
+      <div className="pt-16 pb-16 h-full overflow-auto">{children}</div>
       <FooterSection />
     </div>
   );
