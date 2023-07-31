@@ -1,4 +1,4 @@
-import { DEFAULT_DOCUMENTS } from 'consts';
+import { DEFAULT_DOCUMENTS, DEFAULT_LABELS } from 'consts';
 import { Document } from 'types';
 
 export const getDocuments = async (): Promise<Document[]> => {
@@ -23,6 +23,14 @@ export const getDocument = async (data: {
       } else {
         reject(null);
       }
+    }, 1000);
+  });
+};
+
+export const getDocumentSuggesetedLabels = async () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(DEFAULT_LABELS);
     }, 1000);
   });
 };

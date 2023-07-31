@@ -55,7 +55,10 @@ const documentsSlice = createSlice({
       // Save document failure action
     },
 
-    getDocumentSuggesetedLabelsRequest() {
+    getDocumentSuggesetedLabelsRequest(
+      _,
+      _action: PayloadAction<DocumentsAction.GetDocumentSuggesetedLabelsType>
+    ) {
       // Get suggested document labels request action
     },
   },
