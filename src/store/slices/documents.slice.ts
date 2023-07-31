@@ -45,7 +45,10 @@ const documentsSlice = createSlice({
       // Get documents failure action
     },
 
-    saveDocumentRequest() {
+    saveDocumentRequest(
+      _,
+      _action: PayloadAction<DocumentsAction.SaveDocumentRequestType>
+    ) {
       // Save document request action
     },
     saveDocumentSuccess() {

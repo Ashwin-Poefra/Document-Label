@@ -24,10 +24,21 @@ export const DocumentDetailView: React.FC = () => {
       dispatch(
         AppActions.documents.getDocumentRequest({
           id: Number(id),
+          error: () => {
+            navigate(PATHS.DOCUMENTS_LIST);
+          },
         })
       );
     }
   }, [id]);
+
+  useEffect(() => {
+    if (document?.labels) {
+      setLabels(document?.labels);
+    } else {
+      setLabels([]);
+    }
+  }, [document]);
 
   const onSuggestLabels = () => {
     dispatch(
@@ -40,7 +51,20 @@ export const DocumentDetailView: React.FC = () => {
   };
 
   const onSave = () => {
-    navigate(PATHS.DOCUMENTS_LIST);
+    if (document) {
+      dispatch(
+        AppActions.documents.saveDocumentRequest({
+          id: Number(id),
+          document: {
+            ...document,
+            labels: labels,
+          },
+          next: () => {
+            navigate(PATHS.DOCUMENTS_LIST);
+          },
+        })
+      );
+    }
   };
 
   const onCancel = () => {
