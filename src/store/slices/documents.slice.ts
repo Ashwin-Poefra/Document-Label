@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DEFAULT_DOCUMENTS } from 'consts';
 import { DocumentsAction } from 'store/types';
 import { Document } from 'types';
 
@@ -10,7 +9,7 @@ type DocumentsState = {
 };
 
 const initialState: DocumentsState = {
-  documents: DEFAULT_DOCUMENTS,
+  documents: [],
 };
 
 const documentsSlice = createSlice({
