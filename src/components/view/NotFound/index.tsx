@@ -1,8 +1,8 @@
-import { PATH } from 'consts';
+import { PATHS } from 'consts';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export const NotFoundComponent: React.FC = () => {
+export const NotFoundView: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="text-indigo-500 font-bold text-7xl">404</div>
@@ -13,7 +13,7 @@ export const NotFoundComponent: React.FC = () => {
         The page you are looking for could not be found.
       </div>
       <Link
-        to={PATH.DASHBOARD}
+        to={PATHS.HOME}
         className="mt-4 px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-blue bg-blue-600 active:bg-blue-600 hover:bg-blue-700"
       >
         Go to HomePage!
