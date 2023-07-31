@@ -1,9 +1,11 @@
+import { DEFAULT_DOCUMENTS } from 'consts';
 import React from 'react';
+import { DocumentsListComponent } from 'components/common';
 
 export const DocumentsListView: React.FC = () => {
   return (
-    <div className="w-full h-full flex items-center justify-center">
-      <h1>Welcome to Documents List!!!</h1>
-    </div>
+    <>
+      <DocumentsListComponent documents={DEFAULT_DOCUMENTS} />
+    </>
   );
 };
