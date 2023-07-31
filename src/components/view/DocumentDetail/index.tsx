@@ -1,6 +1,7 @@
-import { DEFAULT_DOCUMENTS, DEFAULT_LABELS, PATHS } from 'consts';
-import React, { useMemo, useState } from 'react';
+import { DEFAULT_LABELS, PATHS } from 'consts';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AppActions, useAppDispatch, useAppSelector } from 'store';
 import {
   ButtonComponent,
   LabelsInputComponent,
@@ -11,13 +12,20 @@ export const DocumentDetailView: React.FC = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const dispatch = useAppDispatch();
+  const { document } = useAppSelector(({ documents }) => documents);
+
   const [labels, setLabels] = useState<string[]>([]);
 
-  const document = useMemo(() => {
+  useEffect(() => {
     if (Number.isNaN(id)) {
       navigate(PATHS.DOCUMENTS_LIST);
     } else {
-      return DEFAULT_DOCUMENTS[Number(id)];
+      dispatch(
+        AppActions.documents.getDocumentRequest({
+          id: Number(id),
+        })
+      );
     }
   }, [id]);
 

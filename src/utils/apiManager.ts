@@ -8,3 +8,21 @@ export const getDocuments = async (): Promise<Document[]> => {
     }, 1000);
   });
 };
+
+export const getDocument = async (data: {
+  id: number;
+}): Promise<Document | null> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const [document] = DEFAULT_DOCUMENTS.filter(
+        (document) => document.id === data.id
+      );
+
+      if (document) {
+        resolve(document);
+      } else {
+        reject(null);
+      }
+    }, 1000);
+  });
+};
