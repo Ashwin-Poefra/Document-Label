@@ -1,4 +1,6 @@
+import { PATHS } from 'consts';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Document } from 'types';
 
 interface DocumentProps {
@@ -18,10 +20,11 @@ export const DocumentComponent: React.FC<DocumentProps> = (props) => {
   };
 
   return (
-    <div
+    <Link
       className={`flex w-full rounded-md ${
         isOdd ? 'bg-white' : 'bg-gray-300'
       } shadow-md shadow-gray-500 text-lg p-4 hover:bg-slate-400 cursor-pointer`}
+      to={`${PATHS.DOCUMENTS_LIST}/${document.id}`}
     >
       <strong className="w-8 text-right">{index}.</strong>
       &nbsp;&nbsp;&nbsp;&nbsp;
@@ -34,6 +37,6 @@ export const DocumentComponent: React.FC<DocumentProps> = (props) => {
       >
         Open
       </div>
-    </div>
+    </Link>
   );
 };
