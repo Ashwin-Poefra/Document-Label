@@ -18,6 +18,42 @@ export function* getDocumentSaga(
     yield put(AppActions.loading.finishLoading());
     yield put(AppActions.documents.getDocumentSuccess({ document }));
   } catch (error) {
+    if (action.payload.error) {
+      action.payload.error();
+    }
+
+    yield put(AppActions.loading.finishLoading());
+    yield put(AppActions.documents.getDocumentFailure());
+  }
+}
+
+export function* saveDocumentSaga(
+  action: PayloadAction<DocumentsAction.SaveDocumentRequestType>
+): Generator {
+  try {
+    yield put(AppActions.loading.setLoading());
+
+    let documents: Document[] = (yield call(
+      apiManager.getDocuments
+    )) as Document[];
+
+    documents = [
+      ...documents.map((document) => {
+        if (document.id === action.payload.id) {
+          return action.payload.document;
+        } else {
+          return document;
+        }
+      }),
+    ];
+
+    yield call(apiManager.saveDocuments, documents);
+
+    yield put(AppActions.loading.finishLoading());
+    if (action.payload.next) {
+      action.payload.next();
+    }
+  } catch (error) {
     yield put(AppActions.loading.finishLoading());
     yield put(AppActions.documents.getDocumentFailure());
   }
@@ -46,6 +82,7 @@ export function* getDocumentSuggesetedLabelsSaga(
 export const documentSaga = function* () {
   yield all([
     takeLatest(AppActions.documents.getDocumentRequest.type, getDocumentSaga),
+    takeLatest(AppActions.documents.saveDocumentRequest.type, saveDocumentSaga),
     takeLatest(
       AppActions.documents.getDocumentSuggesetedLabelsRequest.type,
       getDocumentSuggesetedLabelsSaga
