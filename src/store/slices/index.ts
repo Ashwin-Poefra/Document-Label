@@ -1,3 +1,12 @@
-export const Slices = {};
+import documentsSlice, { documentsActions } from './documents.slice';
+import loadingSlice, { loadingActions } from './loading.slice';
 
-export const Actions = {};
+export const Slices = {
+  documents: documentsSlice.reducer,
+  loading: loadingSlice.reducer,
+};
+
+export const Actions = {
+  documents: documentsActions,
+  loading: loadingActions,
+};
