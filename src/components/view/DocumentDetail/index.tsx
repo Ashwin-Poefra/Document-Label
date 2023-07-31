@@ -1,4 +1,4 @@
-import { DEFAULT_LABELS, PATHS } from 'consts';
+import { PATHS } from 'consts';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AppActions, useAppDispatch, useAppSelector } from 'store';
@@ -30,7 +30,13 @@ export const DocumentDetailView: React.FC = () => {
   }, [id]);
 
   const onSuggestLabels = () => {
-    setLabels(DEFAULT_LABELS);
+    dispatch(
+      AppActions.documents.getDocumentSuggesetedLabelsRequest({
+        next: (labels: string[]) => {
+          setLabels(labels);
+        },
+      })
+    );
   };
 
   const onSave = () => {
