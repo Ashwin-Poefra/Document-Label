@@ -5,12 +5,16 @@ import { apiManager } from 'utils';
 
 export function* getDocumentsSaga(): Generator {
   try {
+    yield put(AppActions.loading.setLoading());
+
     const documents: Document[] = (yield call(
       apiManager.getDocuments
     )) as Document[];
 
+    yield put(AppActions.loading.finishLoading());
     yield put(AppActions.documents.getDocumentsSuccess({ documents }));
   } catch (error) {
+    yield put(AppActions.loading.finishLoading());
     yield put(AppActions.documents.getDocumentsFailure());
   }
 }
