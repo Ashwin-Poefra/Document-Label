@@ -1,3 +1,31 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* {
+  box-sizing: border-box;
+  font-family: objektiv-mk1, sans-serif;
+
+  transition: all;
+  transition-duration: 0.3s;
+}
+
+body {
+  margin: 0px;
+  transition: none;
+  background-color: black;
+}
+
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 20px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #ddd;
+  border-radius: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}

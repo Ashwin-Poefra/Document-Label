@@ -1,2 +1,3 @@
-export * from './common';
-export * from './view';
+export * from "./Document";
+export * from "./Layout";
+export * from "./DocumentDetail";

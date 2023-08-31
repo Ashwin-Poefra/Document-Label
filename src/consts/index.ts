@@ -1,3 +1,4 @@
-export * from './documents';
-export * from './labels';
-export * as PATHS from './paths';
+export * as PATH from "./path";
+export * from "./documents";
+export * from "./menu";
+export * from "./labels";

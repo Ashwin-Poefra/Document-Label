@@ -1,15 +1,7 @@
-export const DEFAULT_LABELS = [
+export const DEFAULT_LABELS: string[] = [
   'cat',
   'dog',
-  'book',
-  'speaker',
-  'director',
-  'hair',
-  'arrival',
-  'city',
-  'problem',
-  'media',
-  'people',
-  'desk',
-  'system',
+  'elephant',
+  'rabbit',
+  'mouse',
 ];
